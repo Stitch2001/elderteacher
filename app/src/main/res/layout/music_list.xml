@@ -6,10 +6,38 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="6dp">
 
-    <ImageView
-        android:id="@+id/image_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop"/>
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/music_name"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="23dp" />
+
+        <ImageView
+            android:id="@+id/music_play"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@drawable/music_play"
+            android:scaleType="centerInside"/>
+
+        <ImageView
+            android:id="@+id/music_tick"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@drawable/music_tick"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gdbjzx.elderteacher">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,14 +8,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:label="玩转智能机">
+        <activity
+            android:name=".MainActivity"
+            android:label="玩转智能机"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SecondMenuActivity"
+            android:label="玩转智能机"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ChooseMusicActivity"
+            android:label="设置来电铃声"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

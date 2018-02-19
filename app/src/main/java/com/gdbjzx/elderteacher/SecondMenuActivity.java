@@ -1,5 +1,6 @@
 package com.gdbjzx.elderteacher;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,9 +10,9 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondMenuActivity extends AppCompatActivity {
 
-    private Image[] images = new Image[10];
+    private Image[] images = new Image[11];
 
     private List<Image> imageList = new ArrayList<>();
 
@@ -22,13 +23,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        for (int i=0;i<=10;i++){
+            images[i] = new Image(-1,0);
+        }//初始化数组，防止崩溃
+
         /*设置标题栏*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         /*设置标题栏*/
 
         /*加载图片*/
-        initMenu();
+        Intent intent = getIntent();
+        int imageLabel = intent.getIntExtra("imageLabel",0);
+        initMenu(imageLabel);
         /*加载图片*/
 
         /*设置主体*/
@@ -40,19 +47,19 @@ public class MainActivity extends AppCompatActivity {
         /*设置主体*/
     }
 
-    private void initMenu() {
-        images[1] = new Image(1,R.drawable.menu_main_1);
-        images[2] = new Image(2,R.drawable.menu_main_2);
-        images[3] = new Image(3,R.drawable.menu_main_3);
-        images[4] = new Image(4,R.drawable.menu_main_4);
-        images[5] = new Image(5,R.drawable.menu_main_5);
-        images[6] = new Image(6,R.drawable.menu_main_6);
-        images[7] = new Image(7,R.drawable.menu_main_7);
-        images[8] = new Image(8,R.drawable.menu_main_8);
-        images[9] = new Image(9,R.drawable.menu_main_9);
+    private void initMenu(int imageLabel) {
+        switch (imageLabel){
+            case 1:
+                images[1] = new Image(11,R.drawable.menu_1_1);
+                images[2] = new Image(12,R.drawable.menu_1_2);
+                images[3] = new Image(13,R.drawable.menu_1_3);
+                images[4] = new Image(0,R.drawable.menu_back);
+            default:
+                break;
+        }//判断应当加载哪一个菜单
         imageList.clear();
-        for (int i=1;i<=9;i++){
-            if (images[i].getImageLabel()!= 0){
+        for (int i=1;i<=10;i++){
+            if (images[i].getImageLabel()!= -1){
                 imageList.add(images[i]);
             }
         }

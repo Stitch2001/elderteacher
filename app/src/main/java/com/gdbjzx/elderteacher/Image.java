@@ -9,14 +9,14 @@ import android.widget.ImageView;
 public class Image {
 
     private int imageId = 0;
-    private int imageLable = 0;
+    private int imageLabel = 0;
 
-    public Image(int imageLable,int imageId){
-        this.imageLable = imageLable;
+    public Image(int imageLabel,int imageId){
+        this.imageLabel = imageLabel;
         this.imageId = imageId;
     }
 
-    //imageLable用于判断点击了哪个按钮，imageId用于加载图片
+    //imageLabel用于判断点击了哪个按钮，imageId用于加载图片
 
     public int getImageId() {
         return imageId;
@@ -26,11 +26,11 @@ public class Image {
         this.imageId = imageId;
     }
 
-    public int getImageLable() {
-        return imageLable;
+    public int getImageLabel() {
+        return imageLabel;
     }
 
-    public void setImageLable(int imageLable) {
-        this.imageLable = imageLable;
+    public void setImageLabel(int imageLabel) {
+        this.imageLabel = imageLabel;
     }
 }

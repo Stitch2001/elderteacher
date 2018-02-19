@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ElderTeacher</string>
+    <string name="title_activity_second_menu">SecondMenu</string>
+    <string name="title_activity_choose_music">ChooseMusic</string>
 </resources>
