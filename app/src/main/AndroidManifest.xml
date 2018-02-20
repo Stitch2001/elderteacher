@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gdbjzx.elderteacher">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -30,8 +30,13 @@
             android:name=".ChooseMusicActivity"
             android:label="设置来电铃声"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SubmitSuggestionsActivity"
+        <activity
+            android:name=".SubmitSuggestionsActivity"
             android:label="意见反馈"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PressPracticeActivity"
+            android:label="按键能力练习"
             android:theme="@style/AppTheme"></activity>
     </application>
 

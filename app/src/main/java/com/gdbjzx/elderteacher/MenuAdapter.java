@@ -60,9 +60,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                         intent = new Intent(mContext,MainActivity.class);
                         mContext.startActivity(intent);
                         break;
-                    case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:case 9:
+                    case 1:case 2:case 3:case 4:case 6:case 7:case 8:case 9:
                         intent = new Intent(mContext,SecondMenuActivity.class);
                         intent.putExtra("imageLabel",image.getImageLabel());
+                        mContext.startActivity(intent);
+                        break;
+                    case 5:
+                        intent = new Intent(mContext,PressPracticeActivity.class);
                         mContext.startActivity(intent);
                         break;
                     case 11:

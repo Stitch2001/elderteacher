@@ -36,28 +36,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/press_to_speak" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="点击此处，输入您的建议"
-        android:inputType="text"
-        android:maxLines="3"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voice_message_send"
-        app:layout_constraintVertical_bias="0.096" />
-
     <ImageButton
         android:id="@+id/text_message_send"
         style="@android:style/Widget.Holo.Light.ImageButton"
@@ -70,7 +48,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:layout_constraintVertical_bias="0.0" />
@@ -79,16 +57,32 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="发      送"
         android:textColor="#FFFFFF"
         android:textSize="29dp"
         app:layout_constraintBottom_toBottomOf="@+id/text_message_send"
         app:layout_constraintEnd_toEndOf="@+id/text_message_send"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="@+id/text_message_send"
-        app:layout_constraintTop_toTopOf="@+id/text_message_send" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="在此处输入您的意见或建议.."
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:textSize="25dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice_message_send" />
 
 </android.support.constraint.ConstraintLayout>

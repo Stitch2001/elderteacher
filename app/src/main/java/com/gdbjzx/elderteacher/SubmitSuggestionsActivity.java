@@ -34,39 +34,43 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_suggestions);
+        /*注册控件*/
         final ImageButton audioMessageSend = (ImageButton) findViewById(R.id.voice_message_send);
         ImageButton textMessageSend =(ImageButton) findViewById(R.id.text_message_send);
         final EditText editText = (EditText) findViewById(R.id.editText);
+        /*注册控件*/
+        /*注册按下录音按钮和抬起录音按钮的事件*/
         audioMessageSend.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         //startVoice();
-                        audioMessageSend.setImageResource(R.drawable.loose_to_unspeak);
+                        audioMessageSend.setImageResource(R.drawable.loose_to_unspeak);//更改录音按钮图片
                         break;
                     case MotionEvent.ACTION_UP:
                         //stopVoice();
-                        audioMessageSend.setImageResource(R.drawable.press_to_speak);
+                        audioMessageSend.setImageResource(R.drawable.press_to_speak);//更改录音按钮图片
                         ProgressDialog progressDialog = new ProgressDialog(SubmitSuggestionsActivity.this);
                         progressDialog.setTitle("意见反馈");
                         progressDialog.setMessage("发送中...");
                         progressDialog.setCancelable(true);
-                        progressDialog.show();
+                        progressDialog.show();//显示加载中提示
                         //uploadVoice();
-                        progressDialog.dismiss();
+                        progressDialog.dismiss();//隐藏加载中提示
                         AlertDialog.Builder dialog = new AlertDialog.Builder(SubmitSuggestionsActivity.this)
                                 .setTitle("意见反馈")
                                 .setMessage("发送成功！")
                                 .setCancelable(true)
                                 .setPositiveButton("关闭",null);
-                        dialog.show();
+                        dialog.show();//显示成功提示
                         break;
                     default:break;
                 }
                 return false;
             }
         });
+        /*注册点击发送按钮的事件*/
         textMessageSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +78,7 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
                 progressDialog.setTitle("意见反馈");
                 progressDialog.setMessage("发送中...");
                 progressDialog.setCancelable(true);
-                progressDialog.show();
+                progressDialog.show();//显示加载中提示
                 /*发送建议*/
                 OkHttpClient client = new OkHttpClient();
                 RequestBody requestBody = new FormBody.Builder()
@@ -90,14 +94,14 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 /*发送建议*/
-                progressDialog.dismiss();
+                progressDialog.dismiss();//隐藏加载中提示
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SubmitSuggestionsActivity.this)
                         .setTitle("意见反馈")
                         .setMessage("发送成功！")
                         .setCancelable(true)
                         .setPositiveButton("关闭",null);
-                dialog.show();
-                editText.setText("");
+                dialog.show();//显示发送成功提示
+                editText.setText("");//清空输入框
             }
         });
     }
