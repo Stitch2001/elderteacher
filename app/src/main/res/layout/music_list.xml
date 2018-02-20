@@ -12,6 +12,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_margin="3dp"
             android:id="@+id/music_name"
             android:layout_width="0dp"
             android:layout_weight="5"

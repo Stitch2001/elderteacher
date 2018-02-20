@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -43,14 +44,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         CardView cardView;
-        TextView MusicName;
+        TextView musicName;
         ImageView musicPlayView;
         ImageView musicTickView;
 
         public ViewHolder(View view) {
             super(view);
             cardView = (CardView) view;
-            MusicName = (TextView) view.findViewById(R.id.music_name);
+            musicName = (TextView) view.findViewById(R.id.music_name);
             musicPlayView = (ImageView) view.findViewById(R.id.music_play);
             musicTickView = (ImageView) view.findViewById(R.id.music_tick);
         }
@@ -122,7 +123,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
                     dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            /*设置铃声（未成功开发）
+                            /*设置铃声（未成功开发。考虑到将来要通过网络手段获取歌曲，故不在此处做冗余研究）
                             Uri musicUri = Uri.parse("android.resource://"+mContext.getPackageName()+"/"+music.getMusicId());
                             try {
                                 file = new File(new URI(musicUri.toString()));
@@ -137,7 +138,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
                             Uri uri = MediaStore.Audio.Media.getContentUriForPath(file.getAbsolutePath());//获取系统音频文件的Uri
                             Uri newUri = mContext.getContentResolver().insert(uri,values);//将文件插入系统媒体库，并获取新的Uri
                             RingtoneManager.setActualDefaultRingtoneUri(mContext,RingtoneManager.TYPE_RINGTONE,newUri);
-                            设置铃声（未成功开发）*/
+                            */
                             AlertDialog.Builder okDialog = new AlertDialog.Builder(mContext);
                             okDialog.setTitle("设置铃声");
                             okDialog.setMessage("成功！");
@@ -151,6 +152,17 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
                 /*确认是否设置*/
             }
         });//注册设置事件
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                final Music music = mList.get(position);
+                if (music.getMusicLabel() == 0){
+                    Intent intent = new Intent(mContext,SubmitSuggestionsActivity.class);
+                    mContext.startActivity(intent);
+                }
+            }
+        });//注册反馈事件
         /*注册点击事件*/
 
         return holder;
@@ -159,7 +171,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Music music = mList.get(position);
-        holder.MusicName.setText(music.getMusicName());
+        holder.musicName.setText(music.getMusicName());
+        if (music.getMusicLabel() == 0){
+            holder.musicPlayView.setImageResource(0);
+            holder.musicPlayView.setClickable(false);
+            holder.musicTickView.setImageResource(0);
+            holder.musicTickView.setClickable(false);
+            holder.musicName.setTextSize(16);
+        }
     }
 
     @Override

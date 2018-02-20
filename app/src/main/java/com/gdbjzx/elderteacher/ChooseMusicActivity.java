@@ -59,12 +59,18 @@ public class ChooseMusicActivity extends AppCompatActivity {
         /*此处内容仅为方便展示使用，实际操作应与http技术结合，从远程服务器获得音乐资源*/
         musics[1] = new Music("难忘今宵 - 李谷一",R.raw.music_1,1);
         musics[2] = new Music("当那一天来临 - 彭丽媛",R.raw.music_2,2);
+        musics[3] = new Music("国际歌 - 唐朝乐队",R.raw.music_3,3);
+        musics[4] = new Music("十送红军 - 刘紫玲",R.raw.music_4,4);
         /*此处内容仅为方便展示使用，实际操作应与http技术结合，从远程服务器获得音乐资源*/
         musicList.clear();
-        for (int i=1;i<=20;i++){
+        int i;
+        for (i=1;i<=19;i++){
             if (musics[i].getMusicLabel()!= 0){
                 musicList.add(musics[i]);
-            }
+            } else
+                break;
         }
+        musics[i].setMusicName("点击这里，告诉我们您想要的铃声");
+        musicList.add(musics[i]);
     }
 }
