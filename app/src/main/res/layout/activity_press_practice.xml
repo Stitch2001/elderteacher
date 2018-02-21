@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/press_practice_layout"
     tools:context="com.gdbjzx.elderteacher.SubmitSuggestionsActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -54,27 +55,28 @@
         app:layout_constraintStart_toEndOf="@+id/long_press"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/press"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="#FAFAFA"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/press_time"
+        app:layout_constraintTop_toBottomOf="@+id/press_time_view"
         app:srcCompat="@drawable/press_to_practice" />
 
     <TextView
-        android:id="@+id/press_time"
+        android:id="@+id/press_time_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:text="00:00:00"
+        android:text="00.000"
         android:textColor="#000000"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +90,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="短按时间小于1秒"
+        android:text="短按时间小于0.5秒"
         android:textColor="#000000"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,10 +108,10 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="0.358"
+        app:layout_constraintTop_toBottomOf="@+id/long_press"
+        app:layout_constraintVertical_bias="0.267"
         app:srcCompat="@drawable/little_button" />
 
 </android.support.constraint.ConstraintLayout>

@@ -65,7 +65,8 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
                                 .setPositiveButton("关闭",null);
                         dialog.show();//显示成功提示
                         break;
-                    default:break;
+                    default:
+                        break;
                 }
                 return false;
             }
