@@ -56,7 +56,8 @@ public class SecondMenuActivity extends AppCompatActivity {
                 images[4] = new Image(0,R.drawable.menu_back);
                 break;
             case 3:
-                images[8] = new Image(38,R.drawable.menu_3_8);
+                images[1] = new Image(38,R.drawable.menu_3_1);
+                images[2] = new Image(0,R.drawable.menu_back);
                 break;
             default:
                 break;

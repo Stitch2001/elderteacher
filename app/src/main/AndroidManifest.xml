@@ -42,7 +42,8 @@
             android:name=".StepTeacherActivity"
             android:label="@string/title_activity_step_teacher"
             android:theme="@style/AppTheme" />
-        <activity android:name=".SetStudyNumberActivity"></activity>
+        <activity android:name=".SetStudyNumberActivity" />
+        <activity android:name=".FinishStudyActivity"></activity>
     </application>
 
 </manifest>

@@ -2,12 +2,16 @@ package com.gdbjzx.elderteacher;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +27,8 @@ public class ChooseMusicActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
 
+    private boolean isPlaying = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,12 @@ public class ChooseMusicActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         /*设置标题栏*/
 
+        /*播放语音*/
+        mediaPlayer = MediaPlayer.create(ChooseMusicActivity.this,R.raw.menu_1_1);
+        mediaPlayer.start();
+        isPlaying = true;
+        /*播放语音*/
+
         /*加载内容*/
         initMusics();
         /*加载内容*/
@@ -48,11 +60,19 @@ public class ChooseMusicActivity extends AppCompatActivity {
         musicAdapter = new MusicAdapter(musicList);//设置适配器
         recyclerView.setAdapter(musicAdapter);//加载适配器
         /*设置主体*/
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (isPlaying){
+                    mediaPlayer.reset();
+                    isPlaying = false;
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
     }
 
     private void initMusics() {
@@ -72,5 +92,13 @@ public class ChooseMusicActivity extends AppCompatActivity {
         }
         musics[i].setMusicName("点击这里，告诉我们您想要的铃声");
         musicList.add(musics[i]);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isPlaying){
+            mediaPlayer.reset();
+        }
     }
 }

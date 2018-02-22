@@ -3,6 +3,7 @@ package com.gdbjzx.elderteacher;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -30,6 +31,11 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
 
     private File voiceFile;
 
+    private MediaPlayer mediaPlayer;
+
+    private boolean isPlaying = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +45,21 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
         ImageButton textMessageSend =(ImageButton) findViewById(R.id.text_message_send);
         final EditText editText = (EditText) findViewById(R.id.editText);
         /*注册控件*/
+
+        /*播放语音*/
+        mediaPlayer = MediaPlayer.create(SubmitSuggestionsActivity.this,R.raw.submit_suggestions_1);
+        mediaPlayer.start();
+        isPlaying = true;
+        /*播放语音*/
+
         /*注册按下录音按钮和抬起录音按钮的事件*/
         audioMessageSend.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                if (isPlaying){
+                    mediaPlayer.reset();
+                    isPlaying = false;
+                }
                 switch (event.getAction()){
                     case MotionEvent.ACTION_DOWN:
                         //startVoice();
@@ -105,6 +122,15 @@ public class SubmitSuggestionsActivity extends AppCompatActivity {
                 editText.setText("");//清空输入框
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isPlaying){
+            mediaPlayer.reset();
+            isPlaying = false;
+        }
     }
 
     /*限于个人水平问题，录音部分未成功开发

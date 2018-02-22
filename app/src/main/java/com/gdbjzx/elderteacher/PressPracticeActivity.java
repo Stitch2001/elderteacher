@@ -1,5 +1,6 @@
 package com.gdbjzx.elderteacher;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,6 +27,8 @@ public class PressPracticeActivity extends AppCompatActivity {
 
     private boolean mWorking = false;
 
+    private boolean isPlaying = false;
+
     private Random random;
 
     private int pressMode = SHORT_PRESS;//初值赋为短按
@@ -35,6 +38,8 @@ public class PressPracticeActivity extends AppCompatActivity {
     private int pressTime;
 
     private TextView pressTimeView;
+
+    private MediaPlayer mediaPlayer;
 
     private Handler handler = new Handler(){
         int showSecond;
@@ -63,6 +68,12 @@ public class PressPracticeActivity extends AppCompatActivity {
         final ImageView littleButton = (ImageView) findViewById(R.id.little_button);
         final TextView tip = (TextView) findViewById(R.id.tip);
         /*注册控件*/
+
+        /*播放语音*/
+        mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+        mediaPlayer.start();
+        isPlaying = true;
+        /*播放语音*/
 
         /*设置时间获取线程*/
         new Thread(new Runnable() {
@@ -96,6 +107,13 @@ public class PressPracticeActivity extends AppCompatActivity {
         shortPress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isPlaying){
+                    mediaPlayer.reset();
+                }
+                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+                mediaPlayer.start();
+                isPlaying = true;
+
                 littleButton.setVisibility(View.GONE);
                 press.setVisibility(View.VISIBLE);
                 pressTimeView.setVisibility(View.VISIBLE);
@@ -108,6 +126,13 @@ public class PressPracticeActivity extends AppCompatActivity {
         longPress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isPlaying){
+                mediaPlayer.reset();
+                }
+                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+                mediaPlayer.start();
+                isPlaying = true;
+
                 littleButton.setVisibility(View.GONE);
                 press.setVisibility(View.VISIBLE);
                 pressTimeView.setVisibility(View.VISIBLE);
@@ -120,6 +145,13 @@ public class PressPracticeActivity extends AppCompatActivity {
         exactlyPress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isPlaying){
+                    mediaPlayer.reset();
+                }
+                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_3);
+                mediaPlayer.start();
+                isPlaying = true;
+
                 random = new Random();//初始化随机数
                 /*设置随机小圆点位置*/
                 ConstraintSet constraintSet = new ConstraintSet();
@@ -196,4 +228,11 @@ public class PressPracticeActivity extends AppCompatActivity {
         /*注册点击事件*/
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (isPlaying){
+            mediaPlayer.reset();
+        }
+    }
 }
