@@ -37,7 +37,12 @@
         <activity
             android:name=".PressPracticeActivity"
             android:label="按键能力练习"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StepTeacherActivity"
+            android:label="@string/title_activity_step_teacher"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SetStudyNumberActivity"></activity>
     </application>
 
 </manifest>

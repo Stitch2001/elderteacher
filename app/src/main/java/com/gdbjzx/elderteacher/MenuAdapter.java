@@ -56,10 +56,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                 int position = holder.getAdapterPosition();
                 Image image = mList.get(position);
                 switch (image.getImageLabel()){
-                    case 0:
-                        intent = new Intent(mContext,MainActivity.class);
-                        mContext.startActivity(intent);
-                        break;
                     case 1:case 2:case 3:case 4:case 6:case 7:case 8:case 9:
                         intent = new Intent(mContext,SecondMenuActivity.class);
                         intent.putExtra("imageLabel",image.getImageLabel());
@@ -71,6 +67,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                         break;
                     case 11:
                         intent = new Intent(mContext,ChooseMusicActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 38:
+                        intent = new Intent(mContext,StepTeacherActivity.class);
+                        intent.putExtra("Label",38);
                         mContext.startActivity(intent);
                         break;
                     default:

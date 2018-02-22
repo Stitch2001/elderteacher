@@ -3,4 +3,5 @@
     <string name="title_activity_second_menu">SecondMenu</string>
     <string name="title_activity_choose_music">ChooseMusic</string>
     <string name="title_activity_press_practice">PressPracticeActivity</string>
+    <string name="title_activity_step_teacher">StepTeacherActivity</string>
 </resources>

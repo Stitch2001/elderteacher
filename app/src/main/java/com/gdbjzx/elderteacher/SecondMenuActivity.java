@@ -54,6 +54,10 @@ public class SecondMenuActivity extends AppCompatActivity {
                 images[2] = new Image(12,R.drawable.menu_1_2);
                 images[3] = new Image(13,R.drawable.menu_1_3);
                 images[4] = new Image(0,R.drawable.menu_back);
+                break;
+            case 3:
+                images[8] = new Image(38,R.drawable.menu_3_8);
+                break;
             default:
                 break;
         }//判断应当加载哪一个菜单

@@ -24,8 +24,6 @@ public class PressPracticeActivity extends AppCompatActivity {
 
     private final int LONG_PRESS = 1;
 
-    private final int UPDATE_TIME = 1;
-
     private boolean mWorking = false;
 
     private Random random;
