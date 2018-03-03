@@ -34,6 +34,8 @@ public class ChooseMusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //存在的BUG：
+
         for (int i=1;i<=20;i++){
             musics[i] = new Music("",0,0);
         }//初始化数组，防止崩溃

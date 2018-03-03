@@ -118,6 +118,12 @@ public class StepTeacherActivity extends AppCompatActivity {
                         alertDialog.setPositiveButton("确定",null).show();
                     }
                     if ( learnedNumber % maxReviewNumber == 0 || learnedNumber == wholeStepNumber ){//判断是否需要复习
+                        if (isPlaying){
+                            mediaPlayer.reset();
+                            mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_recite_1);
+                            mediaPlayer.start();
+                            isPlaying = true;
+                        }
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(StepTeacherActivity.this);
                         alertDialog.setTitle("复习");
                         alertDialog.setMessage("开始复习");
@@ -127,21 +133,9 @@ public class StepTeacherActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 isReview = true;
                                 if (learnedNumber == wholeStepNumber){//判断是否为全步骤复习
-                                    if (isPlaying){
-                                        mediaPlayer.reset();
-                                        mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_recite_2);
-                                        mediaPlayer.start();
-                                        isPlaying = true;
-                                    }
                                     reviewNumber = 1;
                                     stepTeaching(reviewNumber);
                                 } else if (learnedNumber % maxReviewNumber == 0){//判断是否为阶段性复习
-                                    if (isPlaying){
-                                        mediaPlayer.reset();
-                                        mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_recite_1);
-                                        mediaPlayer.start();
-                                        isPlaying = true;
-                                    }
                                     reviewNumber = learnedNumber - (maxReviewNumber - 1);
                                     stepTeaching(reviewNumber);
                                 }
@@ -198,6 +192,12 @@ public class StepTeacherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {//复习时点错的操作
                 if (isReview){//判断是否正在复习
+                    if (isPlaying){
+                        mediaPlayer.reset();
+                        mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_error);
+                        mediaPlayer.start();
+                        isPlaying = true;
+                    }
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(StepTeacherActivity.this);
                     alertDialog.setTitle("复习");
                     alertDialog.setMessage("您点错了，需要重新学习吗？");
@@ -205,6 +205,7 @@ public class StepTeacherActivity extends AppCompatActivity {
                     alertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            isLastStepBack = true;
                             isReview = false;
                             learnedNumber = reviewNumber;//把正在学习的步骤数调整为正在复习的步骤数
                             reviewNumber = 0;//正在复习的步骤数调为0，否则将报错
@@ -217,7 +218,7 @@ public class StepTeacherActivity extends AppCompatActivity {
             }
         });
         /*步骤传授*/
-        /*以上步骤传授模块内容是本人一下午辛苦摸索的结果，除非你有更优算法，否则请勿随意改动，易引起很多莫名其妙的问题*/
+        /*以上步骤传授模块内容是本人一下午辛苦摸索的结果，算法经多次调试未发现问题，如果您没有更优算法，请勿随意改动*/
 
     }
 
@@ -256,7 +257,7 @@ public class StepTeacherActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     if (isPlaying){
                         mediaPlayer.reset();
-                        mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_recite_2);
+                        mediaPlayer = MediaPlayer.create(StepTeacherActivity.this,R.raw.step_recite_1);
                         mediaPlayer.start();
                         isPlaying = true;
                     }

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this)
                 .setTitle("提示")
-                .setMessage("本软件为演示使用的测试版本，目前只开放了“声音太小了”→“电话铃声太小了”、“字太小了”→“微信字太小了”→" +
+                .setMessage("本软件为演示使用的测试版本，目前只开放了“声音太小了”→“电话铃声太小了”、“字太小了”→“微信字太小了”、" +
                         "“总是按不对”三大模块，请知悉。")
                 .setPositiveButton("我知道了",null);
         dialog.show();

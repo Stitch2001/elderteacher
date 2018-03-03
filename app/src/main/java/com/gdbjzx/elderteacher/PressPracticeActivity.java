@@ -70,7 +70,7 @@ public class PressPracticeActivity extends AppCompatActivity {
         /*注册控件*/
 
         /*播放语音*/
-        mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+        mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1);
         mediaPlayer.start();
         isPlaying = true;
         /*播放语音*/
@@ -110,7 +110,7 @@ public class PressPracticeActivity extends AppCompatActivity {
                 if (isPlaying){
                     mediaPlayer.reset();
                 }
-                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1);
                 mediaPlayer.start();
                 isPlaying = true;
 
@@ -129,7 +129,7 @@ public class PressPracticeActivity extends AppCompatActivity {
                 if (isPlaying){
                 mediaPlayer.reset();
                 }
-                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_1_2);
+                mediaPlayer = MediaPlayer.create(PressPracticeActivity.this,R.raw.menu_5_2);
                 mediaPlayer.start();
                 isPlaying = true;
 
